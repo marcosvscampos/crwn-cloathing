@@ -1,9 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import "./MenuItem.styles.scss";
 
-const MenuItem = ({ title, imageUrl, size }) => (
-    <div className={`menu-item ${(size ? size : '')}`}>
+const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
+    <div className={`menu-item ${(size ? size : '')}`} 
+        onClick={() => history.push(`${match.url}${linkUrl}`)}>
         <div className="background-image" style={{
             backgroundImage: `url(${imageUrl})`
         }}/>
@@ -14,4 +16,7 @@ const MenuItem = ({ title, imageUrl, size }) => (
     </div>
 )
 
-export default MenuItem
+// to have access to Router history in nested components, 
+// we nedd to use withRouter as a Decorator pattern of the component
+// and then avoid prop drilling
+export default withRouter(MenuItem)
