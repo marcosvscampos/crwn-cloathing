@@ -19,7 +19,14 @@
       justify-content: flex-end;
   
       .option {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
         padding: 10px 15px;
+        
+        &:hover {
+          color: gray;
+        }
       }
     }
   }
