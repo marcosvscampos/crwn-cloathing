@@ -8,6 +8,11 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
     switch(action.type){
+        case CartActionTypes.CLEAR_ITEM_FROM_CART:
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
+            }
         case CartActionTypes.ADD_ITEM:
             return {
                 ...state,
